@@ -27,6 +27,31 @@ if (!is_null($events['events'])) {
 				'text' => json_encode($event)
 			];
 
+			$messages = [
+				'type' => 'flex',
+				'altText' => 'This is Flex',
+				'contents': {
+					'type': 'bubble',
+					'body': {
+						'type': 'box',
+						'layout': 'vertical',
+						'contents': [
+							{
+								'type': 'button',
+								'style': 'primary',
+								'height': 'sm',
+								'action': {
+									'type': 'uri',
+									'label': 'Add to Cart',
+									'uri': 'https://developers.line.me'
+								}
+							}
+						]
+					}
+				}
+			];
+
+
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [

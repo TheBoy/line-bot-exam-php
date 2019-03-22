@@ -15,29 +15,8 @@ $pushID = 'Ud766ebb32103f4f5962851494f23b918';
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 
-//$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello world');
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\FlexMessageBuilder('hello world alt');
 
-$textMessageBuilder = {
-  "to": $pushID,
- "messages": [
-  {
-   "type": "text",
-   "text": "Hello Quick Reply!",
-   "quickReply": {
-    "items": [
-     {
-      "type": "action",
-      "action": {
-       "type":"message",
-       "label":"Message",
-       "text":"Hello World!!!!"
-      }
-     }
-    ]
-   }
-  }
- ]
-};
 
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
 

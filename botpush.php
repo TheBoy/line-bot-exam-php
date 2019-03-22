@@ -14,6 +14,35 @@ $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 
 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello world');
+
+$textMessageBuilder = [
+  'to': $pushID,
+  'messages': [
+    'type' => 'flex',
+    'altText' => 'This is Flex',
+    'contents': {
+      'type': 'bubble',
+      'body': {
+        'type': 'box',
+        'layout': 'vertical',
+        'contents': [
+          {
+            'type': 'button',
+            'style': 'primary',
+            'height': 'sm',
+            'action': {
+              'type': 'uri',
+              'label': 'Add to Cart',
+              'uri': 'https://developers.line.me'
+            }
+          }
+        ]
+      }
+    }
+  ]
+];
+
+
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
 
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();

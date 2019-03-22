@@ -13,7 +13,7 @@ $pushID = 'Ud766ebb32103f4f5962851494f23b918';
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 
-$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello world');
+//$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello world');
 
 $textMessageBuilder = [
   'to': $pushID,
@@ -42,7 +42,8 @@ $textMessageBuilder = [
   ]
 ];
 
-
+try {
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
+} catch($e) { print_r($e); }
 
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();

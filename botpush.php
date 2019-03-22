@@ -15,9 +15,9 @@ $pushID = 'Ud766ebb32103f4f5962851494f23b918';
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 
-$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello world');
+//$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello world');
 
-/*$textMessageBuilder = [
+$textMessageBuilder = [
   'to': $pushID,
   'messages': [
     'type' => 'flex',
@@ -42,7 +42,7 @@ $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello
       }
     }
   ]
-];*/
+];
 
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
 

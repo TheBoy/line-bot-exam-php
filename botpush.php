@@ -44,8 +44,6 @@ $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello
   ]
 ];*/
 
-try {
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
-} catch($e) { print_r($e); }
 
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();

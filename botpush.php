@@ -17,32 +17,27 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 
 //$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello world');
 
-$textMessageBuilder = [
-  'to': $pushID,
-  'messages': [
-    'type' => 'flex',
-    'altText' => 'This is Flex',
-    'contents': {
-      'type': 'bubble',
-      'body': {
-        'type': 'box',
-        'layout': 'vertical',
-        'contents': [
-          {
-            'type': 'button',
-            'style': 'primary',
-            'height': 'sm',
-            'action': {
-              'type': 'uri',
-              'label': 'Add to Cart',
-              'uri': 'https://developers.line.me'
-            }
-          }
-        ]
+$textMessageBuilder = {
+  "to": $pushID,
+ "messages": [
+  {
+   "type": "text",
+   "text": "Hello Quick Reply!",
+   "quickReply": {
+    "items": [
+     {
+      "type": "action",
+      "action": {
+       "type":"message",
+       "label":"Message",
+       "text":"Hello World!!!!"
       }
-    }
-  ]
-];
+     }
+    ]
+   }
+  }
+ ]
+};
 
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
 

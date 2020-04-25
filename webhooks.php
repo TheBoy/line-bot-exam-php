@@ -106,8 +106,6 @@ function query($conn, $q)
 	return $result;
 }
 
-}
-
 function db_save($q)
 {
 	$conn = connect();

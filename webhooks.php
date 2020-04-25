@@ -104,9 +104,10 @@ function query($conn, $q)
 function db_save($q)
 {
 	$conn = connect();
-	if($query = query($conn, $q))
+	if(!$query = mysqli_query($conn, $q))
 	{
-		disconnect($conn);
+		printf("Errormessage: %s\n", mysqli_error($conn));
+	} else {
 		return $query;
 	}
 	disconnect($conn);

@@ -22,8 +22,9 @@ if (!is_null($events['events'])) {
 			// extract for number
 			if(is_numeric($text) && $text != '')
 			{
+				$sql = '';
 				for($i=1; $i<=5; $i++) {
-					if(strpos($text, $i) !== false)
+					if(strpos($text, (string)$i) !== false)
 					{
 						$sql[] = 't'.$i. '=1';
 					} else {
@@ -41,7 +42,7 @@ if (!is_null($events['events'])) {
 
 				}
 			} else {
-				$responseText = 'รูปแบบไม่ถูกต้อง';
+				$responseText = "ข้อมูลที่คุณส่งให้เราไม่ถูกต้อง!! เราอยากทราบเป้าหมายของคุณก่อน โดยหากคุณชอบมากกว่า 1 อย่าง สามารถส่งมาได้ทั้งหมด 1 = รัฐ, 2 = หุ้นไทย, 3 = หุ้นต่างประเทศ, 4 = ยี่กี, 5 = ยี่กี VIP";
 			}
 
 			// reply message

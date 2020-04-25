@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 require "vendor/autoload.php";
 include "cfg.inc.php";
 
-$pushID = 'Ud766ebb32103f4f5962851494f23b918';
+$push_id = 'Ud766ebb32103f4f5962851494f23b918';
 
 $text = isset($_GET['text']) ? $_GET['text'] : NULL;
 

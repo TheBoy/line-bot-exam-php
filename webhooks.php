@@ -22,13 +22,13 @@ if (!is_null($events['events'])) {
 			// extract for number
 			if(is_numeric($text) && $text != '')
 			{
-				$sql = '';
+				$sql = array();
 				for($i=1; $i<=5; $i++) {
 					if(strpos($text, (string)$i) !== false)
 					{
-						$sql[] = 't'.$i. '=1';
+						$sql[] = 't' . $i . '=1';
 					} else {
-						$sql[] = 't'.$i. '=0';
+						$sql[] = 't' . $i . '=0';
 					}
 
 					if(count($sql) > 0) {

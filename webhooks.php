@@ -16,7 +16,31 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			$text = $event['message']['text']; // Get text sent
 			$replyToken = $event['replyToken']; // Get replyToken
-			echo replyMessage($replyToken, $text);
+			userId = $event['source']['userId']; // Get userID
+			$responseText = NULL;
+
+			// extract for number
+			if(is_numeric($text) && $text != '')
+			{
+				$sql[] = 'INSERT INTO users SET userId = "'.$userId.'" ';
+				for($i=1; $i<=5; $i++) {
+					if(strpos($text, $i) !== false)
+					{
+						$sql[] = 't'.$i. '=1';
+					} else {
+						$sql[] = 't'.$i. '=0';
+					}
+
+					$sql = implode($sql);
+					db_save($sql);
+					$responseText = 'บันทึกข้อมูลแล้ว';
+				}
+			} else {
+				$responseText = 'รูปแบบไม่ถูกต้อง';
+			}
+
+			// reply message
+			if($responseText) echo replyMessage($replyToken, $responseText);
 		}
 	}
 }
@@ -49,4 +73,35 @@ function replyMessage($replyToken, $message)
 	curl_close($ch);
 
 	return $result;
+}
+
+function connect()
+{
+	$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+	// Check connection
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	return $conn;
+}
+
+function disconnect($conn)
+{
+	mysqli_close($conn);
+}
+
+function query($conn, $q)
+{
+	return mysqli_query($conn, $q);
+}
+
+function db_save($q)
+{
+	$conn = connect();
+	if($query = query($conn, $q))
+	{
+		disconnect($conn);
+		return $query;
+	}
+	disconnect($conn);
 }

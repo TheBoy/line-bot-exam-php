@@ -6,3 +6,8 @@ $access_token = 'kzqzlfgem1Lz5p1c+YCdemj3CPoIQNgYAl2H8l5xBiolWxSwEkQAt928oav0MwN
 define('LINE_CHANNEL_ID', $channel_id);
 define('LINE_CHANNEL_SECRET', $channel_secret);
 define('LINE_ACCESS_TOKEN', $access_token);
+
+define('DB_HOST', 'un0jueuv2mam78uv.cbetxkdyhwsb.us-east-1.rds.amazonaws.com');
+define('DB_USER', 'ec151jamsvzg7hvn');
+define('DB_PASSWORD', 'g86cw283pm7owpq2');
+define('DB_NAME', 'pc2v58wwvodywoci');

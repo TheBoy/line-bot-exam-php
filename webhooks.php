@@ -22,17 +22,17 @@ if (!is_null($events['events'])) {
 			// extract for number
 			if(is_numeric($text) && $text != '')
 			{
-				$sql = array();
+				$sql = '';
 				for($i=1; $i<=5; $i++) {
 					if(strpos($text, (string)$i) !== false)
 					{
-						array_push($sql, 't' . $i . '=1');
+						$sql .= 't' . $i . '=1,';
 					} else {
-						array_push($sql, 't' . $i . '=0');
+						$sql .= 't' . $i . '=0,';
 					}
 
-					if(count($sql) > 0) {
-						$sql = 'INSERT INTO users SET userId = "'.$userId.'", ' . join(', ', $sql);
+					if($sql != '') {
+						$sql = rtrim('INSERT INTO users SET userId = "'.$userId.'", ' . $sql, ',');
 						db_save($sql);
 						$responseText = 'บันทึกข้อมูลแล้ว';
 					} else {

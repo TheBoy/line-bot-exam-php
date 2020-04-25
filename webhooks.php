@@ -16,7 +16,7 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			$text = $event['message']['text']; // Get text sent
 			$replyToken = $event['replyToken']; // Get replyToken
-			userId = $event['source']['userId']; // Get userID
+			$userId = $event['source']['userId']; // Get userID
 			$responseText = NULL;
 
 			// extract for number

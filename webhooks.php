@@ -33,6 +33,7 @@ if (!is_null($events['events'])) {
 
 					if($sql != '') {
 						$sql = rtrim('INSERT INTO users SET userId = "'.$userId.'", ' . $sql, ',');
+						log($sql);
 						db_save($sql);
 						$responseText = 'บันทึกข้อมูลแล้ว';
 					} else {
@@ -93,22 +94,24 @@ function connect()
 
 function disconnect($conn)
 {
-	mysqli_close($conn);
+	$conn->close;
 }
 
 function query($conn, $q)
 {
-	return mysqli_query($conn, $q);
+	$result = NULL;
+	if (!$result = $conn -> query($q)) {
+		echo("Error description: " . $mysqli -> error);
+	}
+	return $result;
+}
+
 }
 
 function db_save($q)
 {
 	$conn = connect();
-	if(!$query = mysqli_query($conn, $q))
-	{
-		printf("Errormessage: %s\n", mysqli_error($conn));
-	} else {
-		return $query;
-	}
+	$query = query($conn, $q)
 	disconnect($conn);
+	return $query;
 }

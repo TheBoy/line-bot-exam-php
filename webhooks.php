@@ -22,7 +22,6 @@ if (!is_null($events['events'])) {
 			// extract for number
 			if(is_numeric($text) && $text != '')
 			{
-				$sql[] = 'INSERT INTO users SET userId = "'.$userId.'" ';
 				for($i=1; $i<=5; $i++) {
 					if(strpos($text, $i) !== false)
 					{
@@ -31,9 +30,21 @@ if (!is_null($events['events'])) {
 						$sql[] = 't'.$i. '=0';
 					}
 
-					$sql = implode($sql);
-					db_save($sql);
-					$responseText = 'บันทึกข้อมูลแล้ว';
+					if(count($sql) > 0) {
+						$sql = 'INSERT INTO users SET userId = "'.$userId.'", ' . implode($sql, ', ');
+						db_save($sql);
+						$responseText = 'บันทึกข้อมูลแล้ว';
+					} else {
+						$responseText = ""ข้อมูลที่คุณส่งให้เราไม่ถูกต้อง!! \r\n
+						เราอยากทราบเป้าหมายของคุณก่อน โดยหากคุณชอบมากกว่า 1 อย่าง สามารถส่งมาได้ทั้งหมด เช่น 124  หมายถึง รัฐ หุ้นไทย ยี่กี
+						กด 1 รัฐ<br/>
+						กด 2 หุ้นไทย\r
+						กด 3 หุ้นต่างประเทศ\n
+						กด 4 ยี่กี
+						กด 5 ยี่กี VIP";
+					}
+
+
 				}
 			} else {
 				$responseText = 'รูปแบบไม่ถูกต้อง';

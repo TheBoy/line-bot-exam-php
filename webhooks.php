@@ -109,7 +109,7 @@ function query($conn, $q)
 function db_save($q)
 {
 	$conn = connect();
-	$query = query($conn, $q)
+	$query = query($conn, $q);
 	disconnect($conn);
 	return $query;
 }

@@ -33,7 +33,6 @@ if (!is_null($events['events'])) {
 
 					if($sql != '') {
 						$sql = rtrim('INSERT INTO users SET userId = "'.$userId.'", ' . $sql, ',');
-						log($sql);
 						db_save($sql);
 						$responseText = 'บันทึกข้อมูลแล้ว';
 					} else {
@@ -94,14 +93,14 @@ function connect()
 
 function disconnect($conn)
 {
-	$conn->close;
+	$conn->close();
 }
 
 function query($conn, $q)
 {
 	$result = NULL;
 	if (!$result = $conn -> query($q)) {
-		echo("Error description: " . $mysqli -> error);
+		echo("Error description: " . $conn -> error);
 	}
 	return $result;
 }

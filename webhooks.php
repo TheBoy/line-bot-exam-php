@@ -27,12 +27,10 @@ if (!is_null($events['events'])) {
 					if(strpos($text, (string)$i) !== false)
 					{
 						$sql .= 't' . $i . '=1,';
-					} else {
-						$sql .= 't' . $i . '=0,';
 					}
 
 					if($sql != '') {
-						echo $sql = rtrim('INSERT INTO users SET userId = "'.$userId.'", ' . $sql, ',');
+						echo $sql = rtrim('INSERT INTO users SET userId = "'.$userId.'"');
 						db_save($sql);
 						$responseText = 'บันทึกข้อมูลแล้ว';
 					} else {

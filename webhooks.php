@@ -32,7 +32,7 @@ if (!is_null($events['events'])) {
 					}
 
 					if($sql != '') {
-						$sql = rtrim('INSERT INTO users SET userId = "'.$userId.'", ' . $sql, ',');
+						echo $sql = rtrim('INSERT INTO users SET userId = "'.$userId.'", ' . $sql, ',');
 						db_save($sql);
 						$responseText = 'บันทึกข้อมูลแล้ว';
 					} else {

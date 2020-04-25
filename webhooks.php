@@ -104,7 +104,7 @@ function query($conn, $q)
 function db_save($q)
 {
 	$conn = connect();
-	if($query = query($conn, $q))
+	if($query = query($conn, $q) or die(mysql_error()))
 	{
 		disconnect($conn);
 		return $query;

@@ -26,13 +26,13 @@ if (!is_null($events['events'])) {
 				for($i=1; $i<=5; $i++) {
 					if(strpos($text, (string)$i) !== false)
 					{
-						$sql[] = 't' . $i . '=1';
+						array_push($sql, 't' . $i . '=1');
 					} else {
-						$sql[] = 't' . $i . '=0';
+						array_push($sql, 't' . $i . '=0');
 					}
 
 					if(count($sql) > 0) {
-						$sql = 'INSERT INTO users SET userId = "'.$userId.'", ' . implode($sql, ', ');
+						$sql = 'INSERT INTO users SET userId = "'.$userId.'", ' . join(', ', $sql);
 						db_save($sql);
 						$responseText = 'บันทึกข้อมูลแล้ว';
 					} else {

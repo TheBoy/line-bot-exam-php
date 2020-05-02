@@ -21,8 +21,8 @@ if (!is_null($events['events'])) {
 			$groupId = isset($event['source']['groupId']) ? $event['source']['groupId'] : NULL; // Get groupId
 			$responseText = NULL;
 
-			// extract for number
-			if(is_numeric($text) && $text != '')
+			// if text
+			if($text != '')
 			{
 				$responseText = 'userId: ' . $userId . '\ngroupId: ' . $groupId . '\nroomId: ' . $roomId;
 			} else {

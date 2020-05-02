@@ -25,6 +25,8 @@ if (!is_null($events['events'])) {
 			if(is_numeric($text) && $text != '')
 			{
 				$responseText = 'userId: ' . $userId . '\ngroupId: ' . $groupId . '\nroomId: ' . $roomId;
+			} else {
+				$responseText = 'ERROR';
 			}
 
 			// reply message

@@ -17,8 +17,8 @@ if (!is_null($events['events'])) {
 			$text = $event['message']['text']; // Get text sent
 			$replyToken = $event['replyToken']; // Get replyToken
 			$userId = $event['source']['userId']; // Get $userId
-			$roomId = (isset($event['source']['roomId']) ? $event['source']['roomId'] : NULL)); // Get roomId
-			$groupId = (isset($event['source']['groupId']) ? $event['source']['groupId'] : NULL)); // Get groupId
+			$roomId = isset($event['source']['roomId']) ? $event['source']['roomId'] : NULL; // Get roomId
+			$groupId = isset($event['source']['groupId']) ? $event['source']['groupId'] : NULL; // Get groupId
 			$responseText = NULL;
 
 			// extract for number

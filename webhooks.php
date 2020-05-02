@@ -16,30 +16,15 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			$text = $event['message']['text']; // Get text sent
 			$replyToken = $event['replyToken']; // Get replyToken
-			$userId = $event['source']['userId']; // Get userID
+			$userId = $event['source']['userId']; // Get $userId
+			$roomId = (isset($event['source']['roomId']) ? $event['source']['roomId'] : NULL)); // Get roomId
+			$groupId = (isset($event['source']['groupId']) ? $event['source']['groupId'] : NULL)); // Get groupId
 			$responseText = NULL;
 
 			// extract for number
 			if(is_numeric($text) && $text != '')
 			{
-				$sql = '';
-				for($i=1; $i<=5; $i++) {
-					if(strpos($text, (string)$i) !== false)
-					{
-						$sql .= 't' . $i . '=1,';
-					}
-				}
-
-				if($sql != '') {
-					$sql = rtrim('INSERT INTO users SET userId = "'.$userId.'", ' . $sql, ',');
-					db_save($sql);
-					$responseText = 'บันทึกข้อมูลแล้ว';
-				} else {
-					$responseText = "ข้อมูลที่คุณส่งให้เราไม่ถูกต้อง!! เราอยากทราบเป้าหมายของคุณก่อน โดยหากคุณชอบมากกว่า 1 อย่าง สามารถส่งมาได้ทั้งหมด 1 = รัฐ, 2 = หุ้นไทย, 3 = หุ้นต่างประเทศ, 4 = ยี่กี, 5 = ยี่กี VIP";
-				}
-				
-			} else {
-				$responseText = "ข้อมูลที่คุณส่งให้เราไม่ถูกต้อง!! เราอยากทราบเป้าหมายของคุณก่อน โดยหากคุณชอบมากกว่า 1 อย่าง สามารถส่งมาได้ทั้งหมด 1 = รัฐ, 2 = หุ้นไทย, 3 = หุ้นต่างประเทศ, 4 = ยี่กี, 5 = ยี่กี VIP";
+				$responseText = 'userId: ' . $userId . '\ngroupId: ' . $groupId . '\nroomId: ' . $roomId;
 			}
 
 			// reply message

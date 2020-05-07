@@ -22,9 +22,11 @@ if (!is_null($events['events'])) {
 			$responseText = NULL;
 
 			// if text
-			if($text != '')
+			if($text == '@aaa@')
 			{
 				$responseText = 'userId: ' . $userId . '\ngroupId: ' . $groupId . '\nroomId: ' . $roomId;
+				db_save('INSERT INTO logs SET userId ='" . $userId . "', message = "' . $responseText . '"');
+				$responseText = 'OK!';
 			} else {
 				$responseText = 'ERROR';
 			}

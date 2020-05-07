@@ -25,7 +25,7 @@ if (!is_null($events['events'])) {
 			if($text == '@aaa@')
 			{
 				$responseText = 'userId: ' . $userId . '\ngroupId: ' . $groupId . '\nroomId: ' . $roomId;
-				db_save('INSERT INTO logs SET userId ="' . $userId . '", message = "' . json_encode($event) . '"');
+				db_save('INSERT INTO logs SET userId ="' . $userId . '", message = "' . $responseText . '"');
 				$responseText = 'OK!';
 			} else {
 				$responseText = 'ERROR';

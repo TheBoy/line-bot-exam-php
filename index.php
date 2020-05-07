@@ -40,14 +40,14 @@ function j1($marked, $arr, $tail = false)
 function e($data)
 {
   echo 'จับยี่กี ' . WEB_NAME . ' รอบที่ ' . sprintf("%02d",rand(0,88));
-  echo '<br />---------------<br />';
+  echo '<br />--------------------<br />';
   echo 'เด่น ' . $data['marked1'] . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;รอง ' . $data['marked2'] . '<br/>';
   echo $data['merged1'][0] . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . $data['merged1'][1] . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'  . $data['merged1'][2];
   echo '<br />';
   echo $data['merged2'][0] . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . $data['merged2'][1] . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'  . $data['merged2'][2];
   echo '<br /> WIN / ปักสิบบน-ล่าง<br/>';
   echo '===> ' . $data['row'] . ' <===';
-  echo '<br />---------------<br />';
+  echo '<br />--------------------<br />';
   echo 'หมูพู';
 }
 
